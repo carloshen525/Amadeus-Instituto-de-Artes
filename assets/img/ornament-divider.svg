@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 24" width="300" height="24" fill="none">
+  <!-- Linha esquerda degradê até centro -->
+  <line x1="10" y1="12" x2="115" y2="12" stroke="#DAA520" stroke-width="1" stroke-opacity="0.6"/>
+  <circle cx="120" cy="12" r="2" fill="#DAA520"/>
+  
+  <!-- Símbolo Central Clássico -->
+  <polygon points="150,4 153.5,10.5 160,12 153.5,13.5 150,20 146.5,13.5 140,12 146.5,10.5" fill="#DAA520"/>
+  <circle cx="132" cy="12" r="1.5" fill="#DAA520" opacity="0.8"/>
+  <circle cx="168" cy="12" r="1.5" fill="#DAA520" opacity="0.8"/>
+
+  <!-- Linha direita -->
+  <circle cx="180" cy="12" r="2" fill="#DAA520"/>
+  <line x1="185" y1="12" x2="290" y2="12" stroke="#DAA520" stroke-width="1" stroke-opacity="0.6"/>
+</svg>
+

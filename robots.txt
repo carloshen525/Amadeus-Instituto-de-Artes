@@ -1,0 +1,11 @@
+# Robots.txt - Amadeus Instituto de Artes
+# https://amadeusartes.com.br
+
+User-agent: *
+Allow: /
+Disallow: /scratch/
+Disallow: /temp/
+
+# Sitemaps
+Sitemap: https://amadeusartes.com.br/sitemap.xml
+
