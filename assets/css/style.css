@@ -1901,6 +1901,10 @@ body.has-selection .whatsapp-floating {
   .hero-center-logo {
     max-width: 140px;
   }
+  .footer-logo {
+    max-width: 140px;
+    margin-bottom: 0.8rem;
+  }
   .seo-local-authority-section {
     padding: 4.5rem 1.25rem;
   }
@@ -1984,6 +1988,9 @@ body.has-selection .whatsapp-floating {
   .hero-badge-clean {
     font-size: 0.7rem;
     letter-spacing: 1px;
+  }
+  .footer-logo {
+    max-width: 125px;
   }
   .music-grid-catalog {
     grid-template-columns: 1fr;
