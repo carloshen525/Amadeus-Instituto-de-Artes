@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO ON PAGE OBRIGATÓRIO -->
-  <title>Escola de Música, Teatro e Artes em São João da Boa Vista | Amadeus Instituto de Artes</title>
-  <meta name="description" content="Aprenda música, teatro, dança e artes no Amadeus Instituto de Artes em São João da Boa Vista. Aulas de canto, piano, violão, guitarra, bateria e muito mais.">
-  <meta name="keywords" content="escola de música em São João da Boa Vista, aula de canto São João da Boa Vista, aula de piano São João da Boa Vista, aula de violão São João da Boa Vista, aula de guitarra São João da Boa Vista, escola de teatro São João da Boa Vista, conservatório são joão da boa vista">
+  <title>Escola de Música, Teatro e Dança em São João da Boa Vista | Amadeus Instituto de Artes</title>
+  <meta name="description" content="Aprenda música, teatro, dança e artes no Amadeus Instituto de Artes. Aulas de canto, piano, violão, guitarra, bateria e muito mais em São João da Boa Vista. Agende sua aula experimental.">
+  <meta name="keywords" content="escola de música em São João da Boa Vista, escola de teatro em São João da Boa Vista, escola de dança em São João da Boa Vista, escola de artes em São João da Boa Vista, aula de canto São João da Boa Vista, aula de piano São João da Boa Vista, aula de violão São João da Boa Vista, aula de guitarra São João da Boa Vista, aula de bateria São João da Boa Vista, conservatório são joão da boa vista">
   <meta name="author" content="Amadeus Instituto de Artes">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://amadeusartes.com.br/">
@@ -15,8 +15,8 @@
   <!-- OPEN GRAPH / WHATSAPP / FACEBOOK -->
   <meta property="og:locale" content="pt_BR">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Escola de Música, Teatro e Artes em São João da Boa Vista | Amadeus Instituto de Artes">
-  <meta property="og:description" content="Conservatório clássico e de alto padrão em São João da Boa Vista. Aulas de piano, canto, violão, guitarra, bateria, teatro e dança. Agende sua aula experimental.">
+  <meta property="og:title" content="Escola de Música, Teatro e Dança em São João da Boa Vista | Amadeus Instituto de Artes">
+  <meta property="og:description" content="Aprenda música, teatro, dança e artes no Amadeus Instituto de Artes. Aulas de canto, piano, violão, guitarra, bateria e muito mais em São João da Boa Vista. Agende sua aula experimental.">
   <meta property="og:url" content="https://amadeusartes.com.br/">
   <meta property="og:site_name" content="Amadeus Instituto de Artes">
   <meta property="og:image" content="https://amadeusartes.com.br/assets/img/hero-teatro.jpg">
@@ -26,17 +26,18 @@
 
   <!-- TWITTER CARD -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Escola de Música, Teatro e Artes em São João da Boa Vista | Amadeus Instituto de Artes">
-  <meta name="twitter:description" content="Formação artística completa para crianças, jovens e adultos, unindo tradição, técnica e expressão.">
+  <meta name="twitter:title" content="Escola de Música, Teatro e Dança em São João da Boa Vista | Amadeus Instituto de Artes">
+  <meta name="twitter:description" content="Aprenda música, teatro, dança e artes no Amadeus Instituto de Artes. Aulas de canto, piano, violão, guitarra, bateria e muito mais em São João da Boa Vista. Agende sua aula experimental.">
   <meta name="twitter:image" content="https://amadeusartes.com.br/assets/img/hero-teatro.jpg">
 
   <!-- FAVICON -->
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/favicon.svg">
 
-  <!-- TIPOGRAFIA: GOOGLE FONTS PRECONNECT -->
+  <!-- TIPOGRAFIA: GOOGLE FONTS PRECONNECT & PRELOAD -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- FOLHA DE ESTILOS PRINCIPAL -->
@@ -136,13 +137,34 @@
               "text": "Não. Nossas aulas são desenhadas tanto para iniciantes absolutos quanto para alunos experientes que buscam aperfeiçoamento técnico e vivência de palco."
             }
           }
-        ]
       }
     ]
   }
   </script>
+  <script>
+    if (sessionStorage.getItem('amadeus_curtain_shown') || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('curtains-closed-or-disabled');
+    }
+  </script>
 </head>
 <body>
+
+  <!-- =========================================================================
+       CENOGRAFIA DE TEATRO: CORTINAS DE ABERTURA & POEIRA DE PALCO DOURADA
+       ========================================================================= -->
+  <div id="theater-curtains" class="theater-curtains-overlay" aria-hidden="true">
+    <div class="curtain-panel curtain-left">
+      <div class="curtain-folds"></div>
+      <div class="curtain-fringe"></div>
+    </div>
+    <div class="curtain-panel curtain-right">
+      <div class="curtain-folds"></div>
+      <div class="curtain-fringe"></div>
+    </div>
+    <div class="curtain-center-shadow"></div>
+  </div>
+
+  <canvas id="theater-dust-canvas" class="theater-dust-canvas" aria-hidden="true"></canvas>
 
   <main>
     <!-- =======================================================================
@@ -155,32 +177,43 @@
       <div class="container hero-content">
         <!-- LOGO DISCRETO E REFINADO NO TOPO -->
         <div class="hero-logo-emblem">
-          <img src="assets/img/logo.svg" alt="Logotipo Amadeus Instituto de Artes" class="hero-center-logo" width="170" height="72">
+          <img src="assets/img/logo.svg" alt="Logotipo Amadeus Instituto de Artes - Escola de Música, Teatro e Dança" class="hero-center-logo" width="170" height="72">
         </div>
 
-        <!-- TÍTULO PRINCIPAL H1 HARMONIOSO -->
-        <h1 class="hero-title-clean">
+        <!-- TÍTULO PRINCIPAL DE APRESENTAÇÃO INSTITUCIONAL -->
+        <div class="hero-title-clean">
           Descubra o seu talento artístico no
           <span class="text-gold-italic">Amadeus Instituto de Artes</span>
+        </div>
+
+        <!-- H1 ÚNICO DA PÁGINA: SEO LOCAL PRINCIPAL -->
+        <h1 class="hero-seo-h1">
+          Escola de Música, Teatro, Dança e Artes em São João da Boa Vista
         </h1>
 
-        <!-- SUBTÍTULO LIMPO -->
-        <p class="hero-subtitle-clean">
-          Escola de música, teatro, dança e artes em São João da Boa Vista
+        <!-- PEQUENO TEXTO DE APOIO -->
+        <p class="hero-support-text">
+          Formação artística para crianças, jovens e adultos em um ambiente inspirado nos grandes conservatórios.
         </p>
 
         <!-- BADGE DOURADO SUTIL E ELEGANTE -->
         <div class="hero-badge-clean">
-          ✦ VAGAS LIMITADAS — EXPERIÊNCIA PERSONALIZADA ✦
+          ✦&nbsp;VAGAS LIMITADAS — EXPERIÊNCIA PERSONALIZADA&nbsp;✦
         </div>
 
-        <!-- BOTÃO PRINCIPAL COM RESPIRAÇÃO VISUAL -->
+        <!-- BOTÕES: CTA PRINCIPAL & CTA SECUNDÁRIO -->
         <div class="hero-actions-clean">
           <a href="https://wa.me/551933666484?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20no%20Amadeus%20Instituto%20de%20Artes%20em%20S%C3%A3o%20Jo%C3%A3o%20da%20Boa%20Vista." 
              target="_blank" 
              rel="noopener noreferrer" 
-             class="btn-primary">
+             class="btn-primary"
+             aria-label="Agendar Aula Experimental no Amadeus Instituto de Artes">
             AGENDAR AULA EXPERIMENTAL
+          </a>
+          <a href="#cursos-destaque" 
+             class="btn-secondary"
+             aria-label="Conhecer os cursos artísticos em destaque">
+            CONHECER OS CURSOS
           </a>
         </div>
       </div>
@@ -189,7 +222,7 @@
     <!-- =======================================================================
          2. SOBRE NÓS
          ======================================================================= -->
-    <section class="section" id="sobre">
+    <section class="section theatrical-section" id="sobre">
       <div class="container">
         <!-- BARRA DE CONFIANÇA & AUTORIDADE -->
         <div class="hero-trust-bar" style="margin-top: 0; margin-bottom: 4.5rem; padding-top: 0; border-top: none; border-bottom: 1px solid rgba(218, 165, 32, 0.2); padding-bottom: 2rem;">
@@ -215,9 +248,12 @@
           
           <div class="about-visual">
             <div class="about-image-wrapper">
-              <img src="assets/img/conservatorio-sobre.jpg" 
-                   alt="Piano clássico de madeira nobre e ambiente do Amadeus Instituto de Artes" 
-                   width="600" height="520" loading="lazy">
+              <picture>
+                <source srcset="assets/img/conservatorio-sobre.webp" type="image/webp">
+                <img src="assets/img/conservatorio-sobre.jpg" 
+                     alt="Escola de Música em São João da Boa Vista - Conservatório Amadeus Instituto de Artes" 
+                     width="600" height="520" loading="lazy">
+              </picture>
             </div>
             <div class="about-badge-card">
               <span>✦</span>
@@ -226,12 +262,12 @@
           </div>
 
           <div class="about-text">
-            <span class="eyebrow-badge">✦ FORMAÇÃO COMPLETA ✦</span>
-            <h2 class="section-title" style="text-align: left;">
+            <span class="eyebrow-badge">✦&nbsp;FORMAÇÃO COMPLETA&nbsp;✦</span>
+            <h2 class="section-title theatrical-title">
               Tradição e <span class="text-gold-italic">Excelência</span> Artística
             </h2>
-            <div class="ornament-divider" style="margin-left: 0; margin-right: auto;">
-              <img src="assets/img/ornament-divider.svg" alt="Divisor dourado" width="280" height="24" loading="lazy">
+            <div class="ornament-divider">
+              <img src="assets/img/ornament-divider.svg" alt="" aria-hidden="true" width="280" height="24" loading="lazy">
             </div>
             
             <p>
@@ -244,11 +280,11 @@
 
             <div class="about-highlights">
               <div class="highlight-box">
-                <h4>Ensino Individualizado</h4>
+                <h3>Ensino Individualizado</h3>
                 <p>Respeito ao tempo e aos objetivos de cada estudante.</p>
               </div>
               <div class="highlight-box">
-                <h4>Vivência Teatral</h4>
+                <h3>Vivência Teatral</h3>
                 <p>Apresentações, recitais e imersão cultural constante.</p>
               </div>
             </div>
@@ -257,7 +293,8 @@
               <a href="https://wa.me/551933666484?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20o%20Amadeus%20Instituto%20de%20Artes%20e%20agendar%20uma%20aula%20experimental." 
                  target="_blank" 
                  rel="noopener noreferrer" 
-                 class="btn-primary">
+                 class="btn-primary"
+                 aria-label="Agendar Aula Experimental no Amadeus Instituto de Artes via WhatsApp">
                 AGENDAR AULA EXPERIMENTAL
               </a>
             </div>
@@ -271,14 +308,14 @@
     <!-- =======================================================================
          3. MISSÃO, VISÃO E VALORES
          ======================================================================= -->
-    <section class="section" style="background-color: #0c0c0c; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border);" id="pilares">
+    <section class="section theatrical-section" style="background-color: #0c0c0c; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border);" id="pilares">
       <div class="container">
         
         <div class="section-header">
-          <span class="eyebrow-badge">✦ PRINCÍPIOS INSTITUCIONAIS ✦</span>
-          <h2 class="section-title">Pilares do Conservatório</h2>
+          <span class="eyebrow-badge">✦&nbsp;PRINCÍPIOS INSTITUCIONAIS&nbsp;✦</span>
+          <h2 class="section-title theatrical-title">Pilares do Conservatório</h2>
           <div class="ornament-divider">
-            <img src="assets/img/ornament-divider.svg" alt="Divisor dourado" width="280" height="24" loading="lazy">
+            <img src="assets/img/ornament-divider.svg" alt="" aria-hidden="true" width="280" height="24" loading="lazy">
           </div>
           <p class="section-subtitle">
             Bases sólidas que norteiam nossa prática pedagógica e o desenvolvimento integral de cada aluno.
@@ -359,14 +396,14 @@
     <!-- =======================================================================
          4. CURSOS EM DESTAQUE
          ======================================================================= -->
-    <section class="section" id="cursos-destaque">
+    <section class="section theatrical-section" id="cursos-destaque">
       <div class="container">
         
         <div class="section-header">
-          <span class="eyebrow-badge">✦ VAGAS LIMITADAS ✦</span>
-          <h2 class="section-title">Cursos Artísticos em <span class="text-gold-italic">Destaque</span></h2>
+          <span class="eyebrow-badge">✦&nbsp;VAGAS LIMITADAS&nbsp;✦</span>
+          <h2 class="section-title theatrical-title">Cursos Artísticos em <span class="text-gold-italic">Destaque</span></h2>
           <div class="ornament-divider">
-            <img src="assets/img/ornament-divider.svg" alt="Divisor dourado" width="280" height="24" loading="lazy">
+            <img src="assets/img/ornament-divider.svg" alt="" aria-hidden="true" width="280" height="24" loading="lazy">
           </div>
           <p class="section-subtitle">
             Conheça algumas das experiências mais procuradas pelos nossos alunos.
@@ -378,14 +415,17 @@
           <!-- 1. CANTO -->
           <article class="course-card">
             <div class="course-card-thumb">
-              <img src="assets/img/canto.jpg" alt="Aula de canto em São João da Boa Vista no Amadeus Instituto de Artes" width="400" height="240" loading="lazy" style="object-position: center 30%;">
+              <picture>
+                <source srcset="assets/img/canto.webp" type="image/webp">
+                <img src="assets/img/canto.jpg" alt="Aula de Canto e Técnica Vocal em São João da Boa Vista" width="400" height="240" loading="lazy" style="object-position: center 30%;">
+              </picture>
             </div>
             <div class="course-card-body">
               <h3>Canto</h3>
               <p>Desenvolva sua voz com técnicas profissionais de canto, afinação e interpretação.</p>
               <div class="course-card-footer">
-                <button type="button" class="btn-card-gold" data-course-cta="Canto">
-                  ADICIONAR À EXPERIÊNCIA
+                <button type="button" class="btn-card-gold" data-course-cta="Canto" aria-label="Agendar aula experimental de Canto via WhatsApp">
+                  AGENDAR AULA EXPERIMENTAL
                 </button>
               </div>
             </div>
@@ -394,14 +434,17 @@
           <!-- 2. PIANO -->
           <article class="course-card">
             <div class="course-card-thumb">
-              <img src="assets/img/piano-cauda.jpg" alt="Aula de piano em São João da Boa Vista com piano de cauda de concerto" width="400" height="240" loading="lazy">
+              <picture>
+                <source srcset="assets/img/piano-cauda.webp" type="image/webp">
+                <img src="assets/img/piano-cauda.jpg" alt="Aula de Piano clássico e contemporâneo em São João da Boa Vista" width="400" height="240" loading="lazy">
+              </picture>
             </div>
             <div class="course-card-body">
               <h3>Piano</h3>
               <p>Do clássico ao contemporâneo, desenvolva sua musicalidade e sensibilidade ao teclado.</p>
               <div class="course-card-footer">
-                <button type="button" class="btn-card-gold" data-course-cta="Piano">
-                  ADICIONAR À EXPERIÊNCIA
+                <button type="button" class="btn-card-gold" data-course-cta="Piano" aria-label="Agendar aula experimental de Piano via WhatsApp">
+                  AGENDAR AULA EXPERIMENTAL
                 </button>
               </div>
             </div>
@@ -410,14 +453,17 @@
           <!-- 3. BATERIA -->
           <article class="course-card">
             <div class="course-card-thumb">
-              <img src="assets/img/bateria.jpg" alt="Aulas de bateria acústica em São João da Boa Vista" width="400" height="240" loading="lazy">
+              <picture>
+                <source srcset="assets/img/bateria.webp" type="image/webp">
+                <img src="assets/img/bateria.jpg" alt="Aulas de Bateria acústica no Amadeus Instituto de Artes" width="400" height="240" loading="lazy">
+              </picture>
             </div>
             <div class="course-card-body">
               <h3>Bateria</h3>
               <p>Ritmo, coordenação motora e dinâmica musical com metodologia prática e envolvente.</p>
               <div class="course-card-footer">
-                <button type="button" class="btn-card-gold" data-course-cta="Bateria">
-                  ADICIONAR À EXPERIÊNCIA
+                <button type="button" class="btn-card-gold" data-course-cta="Bateria" aria-label="Agendar aula experimental de Bateria via WhatsApp">
+                  AGENDAR AULA EXPERIMENTAL
                 </button>
               </div>
             </div>
@@ -426,14 +472,17 @@
           <!-- 4. GUITARRA -->
           <article class="course-card">
             <div class="course-card-thumb">
-              <img src="assets/img/guitarra.jpg" alt="Aula de guitarra elétrica em São João da Boa Vista" width="400" height="240" loading="lazy" style="object-position: center 35%;">
+              <picture>
+                <source srcset="assets/img/guitarra.webp" type="image/webp">
+                <img src="assets/img/guitarra.jpg" alt="Aula de Guitarra e Violão com prática de conjunto" width="400" height="240" loading="lazy" style="object-position: center 35%;">
+              </picture>
             </div>
             <div class="course-card-body">
               <h3>Guitarra</h3>
               <p>Técnica, repertório e estilos como rock, blues e jazz com expressividade e solo.</p>
               <div class="course-card-footer">
-                <button type="button" class="btn-card-gold" data-course-cta="Guitarra">
-                  ADICIONAR À EXPERIÊNCIA
+                <button type="button" class="btn-card-gold" data-course-cta="Guitarra" aria-label="Agendar aula experimental de Guitarra via WhatsApp">
+                  AGENDAR AULA EXPERIMENTAL
                 </button>
               </div>
             </div>
@@ -442,14 +491,17 @@
           <!-- 5. MUSICALIZAÇÃO INFANTIL -->
           <article class="course-card">
             <div class="course-card-thumb">
-              <img src="assets/img/musicalizacao.jpg" alt="Musicalização infantil em São João da Boa Vista para crianças" width="400" height="240" loading="lazy" style="object-position: center 60%;">
+              <picture>
+                <source srcset="assets/img/musicalizacao.webp" type="image/webp">
+                <img src="assets/img/musicalizacao.jpg" alt="Musicalização Infantil para crianças em São João da Boa Vista" width="400" height="240" loading="lazy" style="object-position: center 60%;">
+              </picture>
             </div>
             <div class="course-card-body">
               <h3>Musicalização Infantil</h3>
               <p>Uma introdução lúdica e estruturada ao universo dos sons e do ritmo para crianças.</p>
               <div class="course-card-footer">
-                <button type="button" class="btn-card-gold" data-course-cta="Musicalização Infantil">
-                  ADICIONAR À EXPERIÊNCIA
+                <button type="button" class="btn-card-gold" data-course-cta="Musicalização Infantil" aria-label="Agendar aula experimental de Musicalização Infantil via WhatsApp">
+                  AGENDAR AULA EXPERIMENTAL
                 </button>
               </div>
             </div>
@@ -458,14 +510,17 @@
           <!-- 6. TEATRO ADULTO -->
           <article class="course-card">
             <div class="course-card-thumb">
-              <img src="assets/img/teatro.jpg" alt="Escola de teatro e interpretação em São João da Boa Vista" width="400" height="240" loading="lazy" style="object-position: center 25%;">
+              <picture>
+                <source srcset="assets/img/teatro.webp" type="image/webp">
+                <img src="assets/img/teatro.jpg" alt="Aula de Teatro e Expressão Cênica no Amadeus Instituto de Artes" width="400" height="240" loading="lazy" style="object-position: center 25%;">
+              </picture>
             </div>
             <div class="course-card-body">
               <h3>Teatro Adulto</h3>
               <p>Expressão corporal, interpretação, presença de palco e criação artística cênica.</p>
               <div class="course-card-footer">
-                <button type="button" class="btn-card-gold" data-course-cta="Teatro Adulto">
-                  ADICIONAR À EXPERIÊNCIA
+                <button type="button" class="btn-card-gold" data-course-cta="Teatro Adulto" aria-label="Agendar aula experimental de Teatro Adulto via WhatsApp">
+                  AGENDAR AULA EXPERIMENTAL
                 </button>
               </div>
             </div>
@@ -479,11 +534,11 @@
     <!-- =======================================================================
          5. TODAS AS AULAS (EXPLORE NOSSAS ÁREAS ARTÍSTICAS)
          ======================================================================= -->
-    <section class="section" style="background-color: #0b0b0b;" id="todas-aulas">
+    <section class="section theatrical-section" style="background-color: #0b0b0b;" id="todas-aulas">
       <div class="container">
         
         <div class="section-header">
-          <h2 class="section-title">Todas as <em class="gold-italic">Aulas</em></h2>
+          <h2 class="section-title theatrical-title">Todas as <em class="gold-italic">Aulas</em></h2>
           <p class="section-subtitle">
             Explore nosso catálogo completo de cursos artísticos
           </p>
@@ -632,17 +687,13 @@
 
             <div class="music-grid-catalog">
               <div class="music-item-card" data-course-cta="Teatro Adulto"><span class="music-bullet">✦</span><span>Teatro Adulto</span></div>
-              <div class="music-item-card" data-course-cta="Teatro Juvenil"><span class="music-bullet">✦</span><span>Teatro Juvenil</span></div>
               <div class="music-item-card" data-course-cta="Teatro Infantil"><span class="music-bullet">✦</span><span>Teatro Infantil</span></div>
-              <div class="music-item-card" data-course-cta="Expressão Corporal"><span class="music-bullet">✦</span><span>Expressão Corporal</span></div>
-              <div class="music-item-card" data-course-cta="Interpretação Cênica"><span class="music-bullet">✦</span><span>Interpretação Cênica</span></div>
-              <div class="music-item-card" data-course-cta="Construção de Personagem"><span class="music-bullet">✦</span><span>Construção de Personagem</span></div>
-              <div class="music-item-card" data-course-cta="Improvisação Teatral"><span class="music-bullet">✦</span><span>Improvisação Teatral</span></div>
-              <div class="music-item-card" data-course-cta="Oratória e Presença de Palco"><span class="music-bullet">✦</span><span>Oratória & Presença</span></div>
-              <div class="music-item-card" data-course-cta="Leitura Dramática"><span class="music-bullet">✦</span><span>Leitura Dramática</span></div>
-              <div class="music-item-card" data-course-cta="Montagem Teatral"><span class="music-bullet">✦</span><span>Montagem de Espetáculo</span></div>
+              <div class="music-item-card" data-course-cta="Teatro Juvenil"><span class="music-bullet">✦</span><span>Teatro Juvenil</span></div>
               <div class="music-item-card" data-course-cta="Teatro Musical"><span class="music-bullet">✦</span><span>Teatro Musical</span></div>
-              <div class="music-item-card" data-course-cta="Direção Cênica"><span class="music-bullet">✦</span><span>Direção Cênica</span></div>
+              <div class="music-item-card" data-course-cta="Curso de Teatro Musical"><span class="music-bullet">✦</span><span>Curso de Teatro Musical</span></div>
+              <div class="music-item-card" data-course-cta="Teatro"><span class="music-bullet">✦</span><span>Teatro</span></div>
+              <div class="music-item-card" data-course-cta="Mímica Contemporânea"><span class="music-bullet">✦</span><span>Mímica Contemporânea</span></div>
+              <div class="music-item-card" data-course-cta="Poesia"><span class="music-bullet">✦</span><span>Poesia</span></div>
             </div>
 
             <div class="tab-pane-cta">
@@ -662,14 +713,21 @@
             </p>
 
             <div class="music-grid-catalog">
-              <div class="music-item-card" data-course-cta="Ballet Clássico"><span class="music-bullet">✦</span><span>Ballet Clássico</span></div>
-              <div class="music-item-card" data-course-cta="Ballet Infantil (Baby Class)"><span class="music-bullet">✦</span><span>Baby Class & Infantil</span></div>
-              <div class="music-item-card" data-course-cta="Dança Contemporânea"><span class="music-bullet">✦</span><span>Dança Contemporânea</span></div>
-              <div class="music-item-card" data-course-cta="Consciência Corporal"><span class="music-bullet">✦</span><span>Consciência Corporal</span></div>
-              <div class="music-item-card" data-course-cta="Alongamento e Flexibilidade"><span class="music-bullet">✦</span><span>Alongamento & Flexibilidade</span></div>
-              <div class="music-item-card" data-course-cta="Dança Criativa"><span class="music-bullet">✦</span><span>Dança Criativa</span></div>
-              <div class="music-item-card" data-course-cta="Repertório Clássico"><span class="music-bullet">✦</span><span>Repertório & Variações</span></div>
-              <div class="music-item-card" data-course-cta="Postura e Alinhamento Anatômico"><span class="music-bullet">✦</span><span>Alinhamento Postural</span></div>
+              <div class="music-item-card" data-course-cta="Ballet 1 (Baby)"><span class="music-bullet">✦</span><span>Ballet 1 (Baby)</span></div>
+              <div class="music-item-card" data-course-cta="Ballet 2 (Infantil)"><span class="music-bullet">✦</span><span>Ballet 2 (Infantil)</span></div>
+              <div class="music-item-card" data-course-cta="Ballet 3 (Pré-Adolescente)"><span class="music-bullet">✦</span><span>Ballet 3 (Pré-Adolescente)</span></div>
+              <div class="music-item-card" data-course-cta="Ballet 4 (Jovem)"><span class="music-bullet">✦</span><span>Ballet 4 (Jovem)</span></div>
+              <div class="music-item-card" data-course-cta="Ballet 5 (Adulto)"><span class="music-bullet">✦</span><span>Ballet 5 (Adulto)</span></div>
+              <div class="music-item-card" data-course-cta="Ballet"><span class="music-bullet">✦</span><span>Ballet</span></div>
+              <div class="music-item-card" data-course-cta="Coreografias"><span class="music-bullet">✦</span><span>Coreografias</span></div>
+              <div class="music-item-card" data-course-cta="Dança Cigana"><span class="music-bullet">✦</span><span>Dança Cigana</span></div>
+              <div class="music-item-card" data-course-cta="Dança do Ventre"><span class="music-bullet">✦</span><span>Dança do Ventre</span></div>
+              <div class="music-item-card" data-course-cta="Dance 4 Fun"><span class="music-bullet">✦</span><span>Dance 4 Fun</span></div>
+              <div class="music-item-card" data-course-cta="Disco Dance"><span class="music-bullet">✦</span><span>Disco Dance</span></div>
+              <div class="music-item-card" data-course-cta="Forró"><span class="music-bullet">✦</span><span>Forró</span></div>
+              <div class="music-item-card" data-course-cta="Jazz Dance"><span class="music-bullet">✦</span><span>Jazz Dance</span></div>
+              <div class="music-item-card" data-course-cta="Rockabilly"><span class="music-bullet">✦</span><span>Rockabilly</span></div>
+              <div class="music-item-card" data-course-cta="West Coast Swing"><span class="music-bullet">✦</span><span>West Coast Swing</span></div>
             </div>
 
             <div class="tab-pane-cta">
@@ -716,14 +774,13 @@
             </p>
 
             <div class="music-grid-catalog">
-              <div class="music-item-card" data-course-cta="Desenho e Ilustração"><span class="music-bullet">✦</span><span>Desenho & Ilustração</span></div>
-              <div class="music-item-card" data-course-cta="Pintura a Óleo sobre Tela"><span class="music-bullet">✦</span><span>Pintura a Óleo</span></div>
-              <div class="music-item-card" data-course-cta="Pintura Acrílica"><span class="music-bullet">✦</span><span>Pintura Acrílica</span></div>
-              <div class="music-item-card" data-course-cta="Aquarela e Técnicas Mistas"><span class="music-bullet">✦</span><span>Aquarela & Técnicas Mistas</span></div>
-              <div class="music-item-card" data-course-cta="Teoria da Cor e Luz"><span class="music-bullet">✦</span><span>Teoria da Cor & Composição</span></div>
-              <div class="music-item-card" data-course-cta="Ateliê de Artes Visuais"><span class="music-bullet">✦</span><span>Ateliê Criativo Livre</span></div>
-              <div class="music-item-card" data-course-cta="Escultura e Modelagem"><span class="music-bullet">✦</span><span>Escultura & Modelagem</span></div>
-              <div class="music-item-card" data-course-cta="Artes Visuais Infantil"><span class="music-bullet">✦</span><span>Artes Visuais Infantil</span></div>
+              <div class="music-item-card" data-course-cta="Aquarela"><span class="music-bullet">✦</span><span>Aquarela</span></div>
+              <div class="music-item-card" data-course-cta="Artes Plásticas"><span class="music-bullet">✦</span><span>Artes Plásticas</span></div>
+              <div class="music-item-card" data-course-cta="Desenho"><span class="music-bullet">✦</span><span>Desenho</span></div>
+              <div class="music-item-card" data-course-cta="Mangá"><span class="music-bullet">✦</span><span>Mangá</span></div>
+              <div class="music-item-card" data-course-cta="Pintura à Óleo"><span class="music-bullet">✦</span><span>Pintura à Óleo</span></div>
+              <div class="music-item-card" data-course-cta="Art Journal"><span class="music-bullet">✦</span><span>Art Journal</span></div>
+              <div class="music-item-card" data-course-cta="Arteterapia"><span class="music-bullet">✦</span><span>Arteterapia</span></div>
             </div>
 
             <div class="tab-pane-cta">
@@ -743,14 +800,8 @@
             </p>
 
             <div class="music-grid-catalog">
-              <div class="music-item-card" data-course-cta="Workshops e Cursos Intensivos"><span class="music-bullet">✦</span><span>Workshops & Intensivos</span></div>
-              <div class="music-item-card" data-course-cta="Masterclasses com Convidados"><span class="music-bullet">✦</span><span>Masterclasses com Artistas</span></div>
-              <div class="music-item-card" data-course-cta="Vivência em Conservatório"><span class="music-bullet">✦</span><span>Vivência em Conservatório</span></div>
-              <div class="music-item-card" data-course-cta="Preparação para Audições"><span class="music-bullet">✦</span><span>Preparação para Audições</span></div>
-              <div class="music-item-card" data-course-cta="Práticas Interdisciplinares"><span class="music-bullet">✦</span><span>Práticas Interdisciplinares</span></div>
-              <div class="music-item-card" data-course-cta="Formação para Educadores"><span class="music-bullet">✦</span><span>Formação para Educadores</span></div>
-              <div class="music-item-card" data-course-cta="Recitais e Apresentações"><span class="music-bullet">✦</span><span>Recitais Exclusivos</span></div>
-              <div class="music-item-card" data-course-cta="Mentorias Individuais"><span class="music-bullet">✦</span><span>Mentorias Artísticas</span></div>
+              <div class="music-item-card" data-course-cta="Maquiagem Artística"><span class="music-bullet">✦</span><span>Maquiagem Artística</span></div>
+              <div class="music-item-card" data-course-cta="Aluguel de Sala"><span class="music-bullet">✦</span><span>Aluguel de Sala</span></div>
             </div>
 
             <div class="tab-pane-cta">
@@ -773,14 +824,14 @@
     <!-- =======================================================================
          7. DIFERENCIAIS
          ======================================================================= -->
-    <section class="section" style="background-color: #0c0c0c; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border);" id="diferenciais">
+    <section class="section theatrical-section" style="background-color: #0c0c0c; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border);" id="diferenciais">
       <div class="container">
         
         <div class="section-header">
-          <span class="eyebrow-badge">✦ ALTO PADRÃO ✦</span>
-          <h2 class="section-title">Por que escolher o Amadeus?</h2>
+          <span class="eyebrow-badge">✦&nbsp;ALTO PADRÃO&nbsp;✦</span>
+          <h2 class="section-title theatrical-title">Por que escolher o Amadeus?</h2>
           <div class="ornament-divider">
-            <img src="assets/img/ornament-divider.svg" alt="Divisor dourado" width="280" height="24" loading="lazy">
+            <img src="assets/img/ornament-divider.svg" alt="" aria-hidden="true" width="280" height="24" loading="lazy">
           </div>
           <p class="section-subtitle">
             Uma atmosfera concebida nos mínimos detalhes para inspirar dedicação, refinamento e amor à arte.
@@ -825,14 +876,14 @@
     <!-- =======================================================================
          8. LOCALIZAÇÃO, MAPA & GOOGLE MEU NEGÓCIO (SEO LOCAL & PROVA SOCIAL)
          ======================================================================= -->
-    <section class="section" id="localizacao" style="background-color: #080808; border-top: 1px solid var(--gold-border);">
+    <section class="section theatrical-section" id="localizacao" style="background-color: #080808; border-top: 1px solid var(--gold-border);">
       <div class="container">
         
         <div class="section-header">
-          <span class="eyebrow-badge">✦ LOCALIZAÇÃO & CONVIVÊNCIA ✦</span>
-          <h2 class="section-title">Venha conhecer o Amadeus Instituto de Artes</h2>
+          <span class="eyebrow-badge">✦&nbsp;LOCALIZAÇÃO & CONVIVÊNCIA&nbsp;✦</span>
+          <h2 class="section-title theatrical-title">Venha conhecer o Amadeus Instituto de Artes</h2>
           <div class="ornament-divider">
-            <img src="assets/img/ornament-divider.svg" alt="Divisor dourado" width="280" height="24" loading="lazy">
+            <img src="assets/img/ornament-divider.svg" alt="" aria-hidden="true" width="280" height="24" loading="lazy">
           </div>
           <p class="section-subtitle">
             Estamos em São João da Boa Vista - SP, em um ambiente preparado para receber alunos de todas as idades.
@@ -903,7 +954,8 @@
               <a href="https://www.google.com.br/maps/dir//Amadeus+Instituto+de+Artes+%E2%80%93+Aulas+de+M%C3%BAsica,+Dan%C3%A7a+e+Teatro+em+S%C3%A3o+Jo%C3%A3o+da+Boa+Vista/@-21.9680802,-46.7996774,17z" 
                  target="_blank" 
                  rel="noopener noreferrer" 
-                 class="btn-map-primary">
+                 class="btn-map-primary"
+                 aria-label="Como Chegar ao Amadeus Instituto de Artes no Google Maps">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <polygon points="3 11 22 2 13 21 11 13 3 11"/>
                 </svg>
@@ -913,7 +965,8 @@
               <a href="https://www.google.com.br/maps/place/Amadeus+Instituto+de+Artes+%E2%80%93+Aulas+de+M%C3%BAsica,+Dan%C3%A7a+e+Teatro+em+S%C3%A3o+Jo%C3%A3o+da+Boa+Vista/@-21.9680802,-46.7996774,17z/data=!3m1!4b1!4m6!3m5!1s0x94c9cb0e2e20e281:0x68cab2f559f96e58!8m2!3d-21.9680802!4d-46.7996774!16s%2Fg%2F11y9zlzdr1" 
                  target="_blank" 
                  rel="noopener noreferrer" 
-                 class="btn-map-secondary">
+                 class="btn-map-secondary"
+                 aria-label="Ver perfil oficial do Amadeus Instituto de Artes no Google Maps">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                   <circle cx="12" cy="10" r="3"/>
@@ -943,27 +996,27 @@
     <!-- =======================================================================
          9. SEO LOCAL & AUTORIDADE INSTITUCIONAL
          ======================================================================= -->
-    <section class="section seo-local-authority-section" id="tradicao-artistica">
+    <section class="section seo-local-authority-section theatrical-section" id="tradicao-artistica">
       <div class="container">
         
         <div class="seo-local-container">
-          <span class="eyebrow-badge">✦ ESCOLA DE MÚSICA E ARTES EM SÃO JOÃO DA BOA VISTA ✦</span>
+          <span class="eyebrow-badge">✦&nbsp;ESCOLA DE MÚSICA E ARTES EM SÃO JOÃO DA BOA VISTA&nbsp;✦</span>
           
-          <h2 class="seo-local-title">Uma tradição artística que inspira gerações</h2>
+          <h2 class="seo-local-title theatrical-title">Uma tradição artística que inspira gerações</h2>
           
           <div class="ornament-divider">
-            <img src="assets/img/ornament-divider.svg" alt="Divisor dourado" width="280" height="24" loading="lazy">
+            <img src="assets/img/ornament-divider.svg" alt="" aria-hidden="true" width="280" height="24" loading="lazy">
           </div>
           
           <div class="seo-local-body">
             <p>
-              Reconhecido como uma referência de <em class="seo-gold">escola de música em São João da Boa Vista</em> e concebido como uma autêntica <em class="seo-gold">escola de artes em São João da Boa Vista</em>, o Amadeus Instituto de Artes une rigor técnico, sensibilidade e paixão pela formação humana. Em uma atmosfera acolhedora inspirada na tradição dos conservatórios, proporcionamos um ambiente onde o potencial de cada aluno floresce em plenitude.
+              Reconhecido como uma autêntica <em class="seo-gold">escola de música</em> e completa <em class="seo-gold">escola de artes</em> em São João da Boa Vista, o Amadeus Instituto de Artes une rigor técnico e sensibilidade humana. Inspirado na nobre tradição dos conservatórios, nosso espaço oferece um ambiente onde a criatividade floresce com naturalidade.
             </p>
             <p>
-              Nossa pedagogia valoriza a prática viva, oferecendo <em class="seo-gold">aulas de música</em> estruturadas para todas as idades e objetivos. Seja na delicadeza das teclas nas <em class="seo-gold">aulas de piano</em>, na precisão harmônica das <em class="seo-gold">aulas de violão</em> e <em class="seo-gold">aulas de guitarra</em>, na energia rítmica das <em class="seo-gold">aulas de bateria</em> ou na expressão poética da voz com nossas <em class="seo-gold">aulas de canto</em>, o aprendizado é conduzido com dedicação e excelência.
+              Com proposta pedagógica estruturada para todas as idades, proporcionamos <em class="seo-gold">aulas de música</em> fundamentadas na prática viva: da sensibilidade ao teclado nas <em class="seo-gold">aulas de piano</em> à precisão rítmica das <em class="seo-gold">aulas de bateria</em>, passando pela expressividade harmônica nas <em class="seo-gold">aulas de violão</em> e <em class="seo-gold">aulas de guitarra</em>, além da descoberta da própria voz com as <em class="seo-gold">aulas de canto</em>.
             </p>
             <p>
-              Completando essa imersão cultural, o palco e o corpo ganham vida por meio de dinâmicas <em class="seo-gold">aulas de teatro</em> e envolventes <em class="seo-gold">aulas de dança</em>. Um espaço completo onde a técnica encontra a alma, celebrando o talento e a arte em sua forma mais nobre.
+              Integrando o corpo e o palco, nossas vivências em <em class="seo-gold">teatro</em> e <em class="seo-gold">dança</em> despertam a presença cênica e a autoconfiança, celebrando a arte em sua essência mais transformadora.
             </p>
           </div>
         </div>
@@ -974,18 +1027,19 @@
     <!-- =======================================================================
          10. CTA FINAL (SEÇÃO EMOCIONAL)
          ======================================================================= -->
-    <section class="cta-final-section" id="cta-final">
+    <section class="cta-final-section theatrical-section" id="cta-final">
       <div class="cta-final-bg"></div>
       <div class="container cta-final-content">
-        <span class="eyebrow-badge">✦ COMECE SUA JORNADA ✦</span>
-        <h2>Transforme talento em <span class="text-gold-italic">arte</span></h2>
+        <span class="eyebrow-badge">✦&nbsp;COMECE SUA JORNADA&nbsp;✦</span>
+        <h2 class="theatrical-title">Transforme talento em <span class="text-gold-italic">arte</span></h2>
         <p>
           Comece sua jornada artística no Amadeus Instituto de Artes.
         </p>
         <a href="https://wa.me/551933666484?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20no%20Amadeus%20Instituto%20de%20Artes%20em%20S%C3%A3o%20Jo%C3%A3o%20da%20Boa%20Vista." 
            target="_blank" 
            rel="noopener noreferrer" 
-           class="btn-primary">
+           class="btn-primary"
+           aria-label="Agendar Aula Experimental no Amadeus Instituto de Artes via WhatsApp">
           AGENDAR AULA EXPERIMENTAL
         </a>
       </div>
@@ -1000,7 +1054,7 @@
       
       <!-- COLUNA 1: IDENTIDADE -->
       <div class="footer-brand">
-        <img src="assets/img/logo.svg" alt="Logotipo Amadeus Instituto de Artes" class="footer-logo" width="200" height="85" loading="lazy">
+        <img src="assets/img/logo.svg" alt="Logotipo Amadeus Instituto de Artes - Escola de Música, Teatro e Dança" class="footer-logo" width="200" height="85" loading="lazy">
         <p>
           Escola de música, teatro, dança e artes em São João da Boa Vista. Tradição clássica, ambiente de conservatório e formação artística completa.
         </p>
@@ -1008,7 +1062,8 @@
           <a href="https://wa.me/551933666484?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20no%20Amadeus%20Instituto%20de%20Artes." 
              target="_blank" 
              rel="noopener noreferrer" 
-             class="btn-primary btn-small">
+             class="btn-primary btn-small"
+             aria-label="Agendar Aula Experimental via WhatsApp">
             Agendar Aula Experimental
           </a>
         </div>
@@ -1031,18 +1086,36 @@
       <!-- COLUNA 3: CONTATO & LOCALIZAÇÃO -->
       <div class="footer-col">
         <h4>São João da Boa Vista</h4>
-        <p style="font-size: 1.05rem; color: #FFF; margin-bottom: 0.4rem; font-weight: 600;">
+        <p style="font-size: 1.05rem; color: #FFF; margin-bottom: 0.35rem; font-weight: 600;">
           Rua Marechal Deodoro, 219 – Centro
         </p>
-        <p style="font-size: 0.95rem; color: #B0B0B0; margin-bottom: 0.8rem;">
+        <p style="font-size: 0.95rem; color: #B0B0B0; margin-bottom: 0.6rem;">
           São João da Boa Vista - SP • CEP 13870-223
         </p>
-        <p style="font-size: 1.05rem; color: var(--gold-accent); margin-bottom: 0.8rem;">
+        <p style="font-size: 0.92rem; margin-bottom: 0.6rem;">
+          <a href="https://www.google.com.br/maps/place/Amadeus+Instituto+de+Artes+%E2%80%93+Aulas+de+M%C3%BAsica,+Dan%C3%A7a+e+Teatro+em+S%C3%A3o+Jo%C3%A3o+da+Boa+Vista/@-21.9680802,-46.7996774,17z/data=!3m1!4b1!4m6!3m5!1s0x94c9cb0e2e20e281:0x68cab2f559f96e58!8m2!3d-21.9680802!4d-46.7996774!16s%2Fg%2F11y9zlzdr1" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="color: var(--gold-light); text-decoration: underline;"
+             aria-label="Ver perfil e rota no Google Maps">
+            Ver no Google Maps ↗
+          </a>
+        </p>
+        <p style="font-size: 1.02rem; color: var(--gold-accent); margin-bottom: 0.5rem;">
           WhatsApp Oficial: <strong>(19) 3366-6484</strong>
         </p>
-        <p style="font-size: 0.9rem; color: #888888;">
+        <p style="font-size: 0.88rem; color: #888888; margin-bottom: 0.8rem;">
           ✦ Atendimento de Seg. a Sex. (08h às 21h) e Sáb. (08h às 17h)
         </p>
+        <div style="display: flex; gap: 10px; align-items: center; font-size: 0.9rem;">
+          <a href="https://www.instagram.com/amadeusinstitutodeartes/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             style="color: var(--gold-accent); text-decoration: none;"
+             aria-label="Instagram do Amadeus Instituto de Artes">
+            Instagram Oficial ↗
+          </a>
+        </div>
       </div>
 
     </div>
